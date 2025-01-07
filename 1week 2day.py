@@ -1,4 +1,5 @@
 import random
+
 list_nine = []
 for i in range (1,9):
     n= random.randint(1,99)
@@ -17,3 +18,4 @@ if result == 100:
     answer = result.sort
     print(answer)
     exit()
+# 합의 값이 100이 아니면 맨처음부터 반복하려면 ? 반복문 안에 반복문이 있는 형태
