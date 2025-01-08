@@ -17,11 +17,14 @@ def check_tri(k,t_nums): # 삼각수의 합으로 표현 여부를 확인 하는
                     return 1  # 만족하는 조합이 발견되면 바로 즉시 1을 반환
     return 0 # 어떠한 조합을 찾지 못하면 0을 반환
 
-import sys # 여러개의 자연수를 표준 입력으로 받아 한번에 처리 
-input = sys.stdin.read().split() # 입력을 문자열로 받고, split으로 공백을 기준으로 나눠 리스트를 만듬듬
-k_values = [int(x) for x in input]  # 입력값을 모두 int로 변환
-max_k = max(k_values)  # 가장 큰 k를 기준으로 삼각수 리스트 생성
-t_nums = triangular_numbers(max_k)  # 최대 k값까지만 삼각수 생성
+import sys # 테스트 케이스 마다 1 또는 0 을 한줄에 출력 하도록 함함
+input = sys.stdin.read().splitlines()
+
+T = int(input[0])  # 테스트 케이스 개수
+k_values = [int(x) for x in input[1:T+1]]  # 각 테스트 케이스에서의 자연수 K
+
+max_k = max(k_values)  # 가장 큰 K를 기준으로 삼각수 리스트 생성
+t_nums = triangular_numbers(max_k)  # 최대 K값까지만 삼각수 생성
 
 for k in k_values:
     print(check_tri(k, t_nums))
