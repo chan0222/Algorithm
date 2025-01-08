@@ -16,4 +16,10 @@ def check_tri(k): # 삼각수의 합으로 표현 여부를 확인 하는 함수
             for m in t_nums:
                 if i + j + m == k: # 중첩 반복문을 사용하여(3중 루프) 삼각수 리스트에서 3개의 숫자를 골라 합을 계산함
                     return 1  # 만족하는 조합이 발견되면 바로 즉시 1을 반환
-    return 0 # 어떠한 조합을 찾지 못하면 0을 반환환
+    return 0 # 어떠한 조합을 찾지 못하면 0을 반환
+
+import sys # 여러개의 자연수를 표준 입력으로 받아 한번에 처리 
+input = sys.stdin.read().split() # 입력을 문자열로 받고, split으로 공백을 기준으로 나눠 리스트를 만듬듬
+for k in input:
+    k = int(k) # 리스트의 각 요소를 순차적으로 k로 변환 하고, 함수 호출해서 결과 출력 
+    print(check_tri(k))
