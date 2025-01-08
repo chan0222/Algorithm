@@ -9,8 +9,7 @@ def triangular_numbers(limit): # 삼각수는 1-n 까지의 자연수를 더한 
         n += 1
     return t_nums  # k 이하의 삼각수 리스트를 반환 
 
-def check_tri(k): # 삼각수의 합으로 표현 여부를 확인 하는 함수// 자연수 k를 매개변수로 받아 k가 3개의 삼각수의 합으로 표현 가능한지 여부 판단 
-    t_nums = triangular_numbers(k) # 여기서 k는 확인 하고자 하는 자연수 
+def check_tri(k,t_nums): # 삼각수의 합으로 표현 여부를 확인 하는 함수// 자연수 k를 매개변수로 받아 k가 3개의 삼각수의 합으로 표현 가능한지 여부 판단  
     for i in t_nums:
         for j in t_nums:
             for m in t_nums:
@@ -20,6 +19,9 @@ def check_tri(k): # 삼각수의 합으로 표현 여부를 확인 하는 함수
 
 import sys # 여러개의 자연수를 표준 입력으로 받아 한번에 처리 
 input = sys.stdin.read().split() # 입력을 문자열로 받고, split으로 공백을 기준으로 나눠 리스트를 만듬듬
-for k in input:
-    k = int(k) # 리스트의 각 요소를 순차적으로 k로 변환 하고, 함수 호출해서 결과 출력 
-    print(check_tri(k))
+k_values = [int(x) for x in input]  # 입력값을 모두 int로 변환
+max_k = max(k_values)  # 가장 큰 k를 기준으로 삼각수 리스트 생성
+t_nums = triangular_numbers(max_k)  # 최대 k값까지만 삼각수 생성
+
+for k in k_values:
+    print(check_tri(k, t_nums))
