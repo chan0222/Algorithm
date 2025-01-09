@@ -1,17 +1,16 @@
 import sys
-a,b = map(int, sys.stdin.readline().split())
-
+a, b = map(int, sys.stdin.readline().split()) # 두개의 정수를 입력 받음
 if a == b:
-    print("{:.3f}".format(round(1-(10-a)/153,3)))
-else:
+    print("{:.3f}".format(round(1-(10-a)/153, 3))) # 두 카드가 동일한 경우 특수한 확률 계산을 수행
+    # 선택가능한 특정 카드의 범위/가능한 카드 조합 => 특정 조건을 만족하는 확률을 계산// 결과는 소수점 세자리 까지 
+else:             # 카드풀은 각 카드 번호 (1-10까지) 가 두번 나타나는 20장의 카드 이다. 
     li = list(range(1,11))*2
     li.remove(a)
-    li.remove(b)
-
-a = (a+b)%10
-s = 0
-for i in range(18):
-    for j in range(i+1,18):
-        if li[i] !=li[j] and (li[i]+li[j])%10 < a:
-            s += 1
-print("{:3f}".format(round(s/153,3)))
+    li.remove(b) # a와 b를 제거하여 선택된 두 카드를 카드 풀에서 제외함
+    a = (a+b)%10 # 새로운 기준 계산 : 선탠된 두 카드의 합을 10으로 나눈 나머지를 a로 재정의/ 게임 규칙에 따라 새 기준값이 설정됨
+    s = 0    # 카드 풀에서 두장의 카드를 선택하는 모든 경우를 탐색
+    for i in range(18): 
+        for j in range(i+1, 18):
+            if li[i] != li[j] and (li[i]+li[j])%10 < a: # 조건 선택한 두 카드가 서로 달라야함 두카드의 합을 10으로 나눈 나머지가 새로운 기준 a보다 작아야함
+                s += 1 # 조건을 만족하면 겨우의 수를 증가 시킵니다. 
+    print("{:.3f}".format(round(s/153, 3))) # 확률 계산 및 출력 s/153은 조건을 만족하는 경우의 수를 전체 경우의 수로 나눈 확률
