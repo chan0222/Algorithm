@@ -10,3 +10,5 @@ for i in range(9):
             for dwarf in result: # 정답인 난쟁이 7명의 키를 한줄씩 출력한다. 
                 print(dwarf)
             sys.exit() # 정답을 찾은 후 프로그램을 종료 
+
+
