@@ -26,7 +26,7 @@ for num, price in enumerate(MachineDuck): # for => 리스트의 모든 주식 �
     if temp[0] < temp[1] < temp[2] < temp[3] and count_timing > 0: # 수식 가격의 연속적인 상승 여부를 확인  count_timing > 0 은 주식이 있을 때만 매도 가능하도록 조건 추가 상승장일때 주식을 매도하고 이익 실현
         money_timing += (count_timing * temp[3])
         count_timing = 0
-    elif temp[0] > temp[1] > temp[2] > temp[3]:
+    elif temp[0] > temp[1] > temp[2] > temp[3]: # 주식 가격의 연속적인 하락 여부를 확인//  하락장에서 주식을 매수해 가격이 오를때를 대비비
         count_timing += (money_timing // temp[3])
         money_timing %= temp[3]
 
